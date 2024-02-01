@@ -9,7 +9,7 @@ metadata:
   name: app-test-1-deploy
   namespace: app-test-1
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels: 
       app: app-test-1
@@ -41,3 +41,21 @@ spec:
     protocol: TCP
   selector:
     app: app-test-1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+spec:
+  ports:
+  - name: http
+    port: 9000
+    protocol: TCP
+    targetPort: 9000
+  - name: http-ui
+    port: 9001
+    protocol: TCP
+    targetPort: 9001
+  selector:
+    app: minio
+  type: LoadBalancer
