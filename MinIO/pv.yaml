@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: minio-pv-claim
 spec:
+  storageClassName: nfs
   accessModes:
     - ReadWriteOnce
   resources:
